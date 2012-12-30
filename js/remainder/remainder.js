@@ -19,6 +19,9 @@ var Remainder = {
 			// fixes bug with clearance
 			$('ol#here').show();
 
+			// enabled clear button
+			$('input#clear').removeAttr('disabled');
+
 			// prevents default for no page reload
 			e.preventDefault();
 
@@ -106,10 +109,7 @@ var Remainder = {
 	 * If this.validateResult returns true, then runs. Prints result and formats other results.
 	 */
 	printAnswer: function(){
-		// caches this
-		var me = this;
-
-		// adds 1 to this.tried and the answer archive index
+		// adds 1 to this.tried, this.allTried and the answer archive index
 		this.tried += 1;
 		this.allTried += 1;
 		this.answersArchive.index += 1;

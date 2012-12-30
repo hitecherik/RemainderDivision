@@ -26,6 +26,7 @@ var Page = {
 			e.preventDefault(); // prevents reload
 			$('input#recover').attr('disabled', 'true'); // disables re-recovery
 			Remainder.answersArchive.recoverAnswers(); // calls remainder.js's method
+			$('input#clear').removeAttr('disabled');
 		}); // recover cleared answers
 	},
 
@@ -41,6 +42,7 @@ var Page = {
 
 			// makes recovery of answers enabled
 			$('input#recover').removeAttr('disabled');
+			$('input#clear').attr('disabled', 'true');
 		};
 	},
 

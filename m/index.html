@@ -1,0 +1,44 @@
+<!--
+	Created by Alexander Nielsen. alex@hitecherik.site11.com
+	With help of http://www.abeautifulsite.net for mobile detection
+	30 December 2012
+-->
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Division with Remainders: Mobile</title>
+
+		<!-- mobile detection -->
+		<script type="text/javascript">
+			function isMobile(){return(navigator.userAgent.match(/Android/i)||navigator.userAgent.match(/BlackBerry/i)||navigator.userAgent.match(/iPhone|iPad|iPod/i)||navigator.userAgent.match(/Opera Mini/i)||navigator.userAgent.match(/IEMobile/i));}
+
+			if(!isMobile()){
+				window.location = "http://remainder.eu5.org";
+			};
+		</script>
+	</head>
+	<body style="font-family:Helvetica;">
+		<h1>Division with Remainders <i> - Mobile</li></i></h1>
+
+		<!-- answer printed here -->
+		<h3 style="display:inline;">Your Answer:</h3>
+		<p id="here" style="display:inline;font-style:italic;"><span style="color:red;font-weight:bold">There has been an error. Please refresh the page to try again.</span></p>
+
+		<!-- about page -->
+		<h2>About This Page</h2>
+		<p>This page is a temporary page for mobiles. There is a new version coming soon. This web page does not store your answers, so you will have to remember them. To use this page again just refresh it.</p>
+
+		<script type="text/javascript">
+			function remainder(numerator,denominator){var num=numerator,denom=denominator,answer={result:"NaN",modulo:"NaN"};answer.result=Math.floor(num/denom).toString();answer.modulo=(num%denom).toString();return answer;}
+
+			var num = prompt("Numerator:"),
+				denom = prompt("Denominator:"),
+				returned = remainder(num, denom),
+				answer = returned.result + " remainder " + returned.modulo;
+
+			document.getElementById("here").innerHTML = answer;
+		</script>
+	</body>
+</html>

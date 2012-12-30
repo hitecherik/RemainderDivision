@@ -1,0 +1,57 @@
+<!--
+	Created by Alexander Nielsen. alex@hitecherik.site11.com
+	29 December 2012
+-->
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Dividing with Remainders</title>
+
+		<!-- meta tags -->
+		<meta name="viewport" content="width=device-width" />
+		<meta name="author" content="Alexander Nielsen" />
+		<meta name="description" content="A simple web page that calculates the answer to a devision question with a remainder, and not a decimal." />
+		<meta name="keywords" content="dividing, modulo, remainder, non-decimal" />
+
+		<!-- stylesheets -->
+		<link rel="stylesheet" href="css/normalize.min.css">
+		<link rel="stylesheet" href="css/style.css">
+
+		<!-- javascript -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> <!-- jquery -->
+		<script type="text/javascript" src="js/detect/ie-detect.js"></script> <!-- ie detect script -->
+		<script type="text/javascript" src="js/detect/mobile-detect.js"></script> <!-- mobile detect for redirect -->
+	</head>
+	<body>
+		<div class="wrap">
+			<h1>Division with Remainders</h1>
+			<p>Many questions or problems require a remainder as an answer, and not a recurring fraction, like most other calculators provide. Enter the two numbers in the division problem below and the answer will appear below with the remainder.</p>
+			<p>All of the answers will remain on the page, even after a new problem! They will just keep on being added, the most recent in <span class="prev" style="font-weight:bold;">green</span>.</p>
+			<hr />
+			<form>
+				<p class="error">You seem to have JavaScript disabled. Please enable JavaScript, otherwise this tool <u>will not work</u>.</p>
+				<input type="text" id="numerator" name="numerator" placeholder="numerator" /> <b>&#247;</b> <input type="text" id="denominator" name="denominator" placeholder="denominator" /> <input type="submit" value="Divide!" id="submit"/>
+			</form>
+			<form id="controls">
+				<!-- controls -->
+				<input type="submit" id="clear" value="Clear Answers" />
+				<input type="submit" id="recover" value="Recover Cleared Answers" disabled="true" />
+			</form>
+			<hr />
+			<div class="answers">
+				<h2>Answers</h2>
+				<ol id="here"></ol>
+			</div>
+		</div>
+
+		<footer>
+			<h2>About</h2>
+			<div class="footer-content">
+				<p>Created by <a href="http://hitecherik.site11.com" target="_blank">Alexander Nielsen (<i>or hitecherik</i>)</a> when testing the modulus operation in JavaScript. Used Esspresso HTML (iPhone) and Sublime Text 2 (Windows PC). Coded in HTML, CSS and JavaScript (using jQuery).</p>
+		</footer>
+
+		<script type="text/javascript" src="js/remainder/remainder.js"></script> <!-- remainder object -->
+		<script type="text/javascript" src="js/page.js"></script> <!-- page object -->
+	</body>
+</html>

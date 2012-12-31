@@ -10,9 +10,8 @@ var Remainder = {
 	 * Starts off Remainder, sets events.
 	 */
 	init: function(){
-		// declares this.tried and this.allTried and sets them to 0.
+		// declares this.tried and and sets it to 0.
 		this.tried = 0;
-		this.allTried = 0;
 
 		// listens for form submition.
 		$('input#submit').on('click', function(e){
@@ -109,9 +108,8 @@ var Remainder = {
 	 * If this.validateResult returns true, then runs. Prints result and formats other results.
 	 */
 	printAnswer: function(){
-		// adds 1 to this.tried, this.allTried and the answer archive index
+		// adds 1 to this.tried and the answer archive index
 		this.tried += 1;
-		this.allTried += 1;
 		this.answersArchive.index += 1;
 
 		if (this.tried===1) {
@@ -124,8 +122,7 @@ var Remainder = {
 		this.answersArchive.allAnswers.push(this.answer)
 
 		// formats to make most recent answer green
-		$('ol#here li:nth-child(' + (this.allTried - 1).toString() + ')').removeClass('prev');
-		$('ol#here li:last').addClass('prev');
+		$('ol#here li:last').addClass('prev').prev().removeClass('prev');
 
 		// calls this.placeCursor to erase input and put cursor in first input
 		this.placeCursor();
@@ -162,28 +159,16 @@ var Remainder = {
 
 	/**
 	 * Called by Page.clearAnswers. Clears ol#here and resets this.tried to 0.
-	 * @return {boolean} To continue in Page.clearAnswers or not
 	 */
 	clearAnswers: function(){
-		// sets variable to be returned and cahces this.tried
-		var bool = ($('ol#here').html()!==""),
-			tried = this.tried;
+		// empties ol#here smoothly
+		$('ol#here').slideUp().empty();
 
-		// checks to see if to clear or not
-		if(bool){
-			// empties ol#here smoothly
-			$('ol#here').slideUp().empty();
+		// sets this.tried to 0.
+		this.tried = 0;
 
-			// sets this.tried to 0.
-			tried = 0;
-		} else {
-			// if nothing to be cleared
-			alert("Error: There are no answers to clear.");
-		};
-
-		this.tried = tried; // resets this.tried to tried, just in case
-
-		return bool;
+		// places cursor in numerator input box (user convenience)
+		this.placeCursor();
 	},
 
 	/**
@@ -207,9 +192,6 @@ var Remainder = {
 				// adds to html (which will be printed)
 				html += me.allAnswers[i];
 			}
-
-			// sets allTried so green highlighting works
-			Remainder.allTried = this.allAnswers.length;
 
 			$('ol#here').empty();
 			$('ol#here').prepend(html);

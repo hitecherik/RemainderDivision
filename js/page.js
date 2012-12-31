@@ -26,7 +26,7 @@ var Page = {
 			e.preventDefault(); // prevents reload
 			$('input#recover').attr('disabled', 'true'); // disables re-recovery
 			Remainder.answersArchive.recoverAnswers(); // calls remainder.js's method
-			$('input#clear').removeAttr('disabled');
+			$('input#clear').removeAttr('disabled'); // enables clearing
 		}); // recover cleared answers
 	},
 
@@ -37,13 +37,12 @@ var Page = {
 
 	clearAnswers: function(){
 		// calls Remainder.clearAnswers then hides div.answers h2.
-		if(Remainder.clearAnswers()){
-			$('div.answers h2').hide();
+		Remainder.clearAnswers();
+		$('div.answers h2').hide();
 
-			// makes recovery of answers enabled
-			$('input#recover').removeAttr('disabled');
-			$('input#clear').attr('disabled', 'true');
-		};
+		// makes recovery of answers enabled and disables clearing
+		$('input#recover').removeAttr('disabled');
+		$('input#clear').attr('disabled', 'true');
 	},
 
 	startAnswers: function(){
